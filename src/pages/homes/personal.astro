@@ -10,7 +10,7 @@ import Testimonials from '~/components/widgets/Testimonials.astro';
 import Steps from '~/components/widgets/Steps.astro';
 import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 import { getPermalink } from '~/utils/permalinks';
-
+import headshot from '~/assets/images/headshot.png'
 const metadata = {
   title: 'Personal Homepage Demo',
 };
@@ -26,7 +26,7 @@ const metadata = {
         { text: 'Resume', href: '#resume' },
         { text: 'Porfolio', href: '#porfolio' },
         { text: 'Blog', href: '#blog' },
-        { text: 'Github', href: 'https://github.com/onwidget' },
+        { text: 'Github', href: 'https://github.com/sondy91' },
       ]}
       actions={[
         {
@@ -43,14 +43,13 @@ const metadata = {
 
   <Hero
     id="hero"
-    title="Sarah Johnson"
-    tagline="Personal Web Demo"
+    title="Austin Sonderman"
+    tagline="Personal Portfolio"
     actions={[{ variant: 'primary', text: 'Hire me', href: getPermalink('/contact#form') }]}
   >
     <Fragment slot="subtitle">
-      I'm a Graphic Designer passionate about crafting visual stories. <br /> With 5 years of experience and a degree from
-      New York University's School of Design. I infuse vitality into brands and designs, transforming concepts into captivating
-      realities.
+      I'm a Software Engineer passionate about creating well-made and efficent software that is a joy to use. <br /> With 7 years of experience building scalable, reliable applications across the tech stack. 
+      My expertise spans developing modern Single Page Applications (SPAs), crafting efficient Python FastAPI APIs, and architecting robust cloud solutions with AWS.
     </Fragment>
   </Hero>
 
@@ -61,33 +60,33 @@ const metadata = {
     columns={3}
     items={[
       {
-        icon: 'tabler:brand-dribbble',
+        icon: 'tabler:brand-aws',
         callToAction: {
           target: '_blank',
-          text: 'Dribbble',
+          text: 'AWS',
           href: '#',
         },
       },
       {
-        icon: 'tabler:brand-behance',
+        icon: 'tabler:brand-python',
         callToAction: {
           target: '_blank',
-          text: 'Behance',
+          text: 'Python',
           href: '#',
         },
       },
       {
-        icon: 'tabler:brand-pinterest',
+        icon: 'tabler:brand-golang',
         callToAction: {
           target: '_blank',
-          text: 'Pinterest',
+          text: 'Go',
           href: '#',
         },
       },
     ]}
     image={{
-      src: 'https://images.unsplash.com/photo-1491349174775-aaafddd81942?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
-      alt: 'Colorful Image',
+      src: headshot,
+      alt: 'Austin Sonderman',
       loading: 'eager',
     }}
   >
@@ -119,14 +118,17 @@ const metadata = {
     items={[
       {
         title:
-          'Graphic Designer <br /> <span class="font-normal">ABC Design Studio, New York, NY</span> <br /> <span class="text-sm font-normal">2021 - Present</span>',
-        description: `Collaborate with clients to understand design requirements and objectives. <br /> Develop branding solutions, including logos, color palettes, and brand guidelines. <br /> Design marketing materials such as brochures, posters, and digital assets. <br /> Create visually appealing user interfaces for websites and applications.`,
+          'AI Software Engineer <br /> <span class="font-normal">Collins Aerospace, Nashville, TN</span> <br /> <span class="text-sm font-normal">2023 - Present</span>',
+        description: `I work in the AI/ML department to help build an enterprise platform of solutions to serve all 80,000 employees at Collins. <br />
+        I work in Python, FastAPI, and AWS everyday. I have created different Retrieval Augmented Generation pipelines and solutions as well as chatbot solutions using Streamlit, CSS, and PING SSO. <br />
+        I've utilized various AWS services as that is the main cloud environment I work in. I have experience in the Gov and Commercial clouds. Every day is an adventure!`,
         icon: 'tabler:briefcase',
       },
       {
         title:
-          'Junior Graphic Designer <br /> <span class="font-normal">XYZ Creative Agency, Los Angeles, CA</span> <br /> <span class="text-sm font-normal">2018 - 2021</span>',
-        description: `Assisted senior designers in creating design concepts and visual assets. <br /> Contributed to the development of brand identities and marketing collateral. <br /> Collaborated with the marketing team to ensure consistent design across campaigns. <br /> Gained hands-on experience in various design software and tools.`,
+          'Software Engineer II <br /> <span class="font-normal">Zywave, Milwaukee, WI</span> <br /> <span class="text-sm font-normal">2017 - 2022</span>',
+        description: `I worked as a full-stack engineer building solutions on our SPA products. I mainly worked around Content and Content Management. <br /> 
+        This including search, custom content, content management, and back-end processes for users content as well as our own. `,
         icon: 'tabler:briefcase',
       },
     ]}
@@ -140,11 +142,7 @@ const metadata = {
     title="Education"
     items={[
       {
-        title: `Master of Fine Arts in Graphic Design <br /> <span class="font-normal">New York University's School of Design</span> <br /> <span class="text-sm font-normal">2018 - 2020</span>`,
-        icon: 'tabler:school',
-      },
-      {
-        title: `Bachelor of Arts in Graphic Design <br /> <span class="font-normal">New York University's School of Design</span> <br /> <span class="text-sm font-normal">2014 - 2018</span>`,
+        title: `Bachelor's of Science <br /> <span class="font-normal">University of Wisconsin - Milwaukee</span> <br /> <span class="text-sm font-normal">2013 - 2016</span>`,
         icon: 'tabler:school',
       },
     ]}
