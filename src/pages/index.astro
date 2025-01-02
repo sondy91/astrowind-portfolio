@@ -12,7 +12,7 @@ import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 import { getPermalink } from '~/utils/permalinks';
 import headshot from '~/assets/images/headshot.png'
 const metadata = {
-  title: 'Personal Homepage Demo',
+  title: 'Austin Sonderman Portfolio Site',
 };
 ---
 
@@ -26,12 +26,12 @@ const metadata = {
         { text: 'Resume', href: '#resume' },
         { text: 'Porfolio', href: '#porfolio' },
         { text: 'Blog', href: '#blog' },
-        { text: 'Github', href: 'https://github.com/sondy91' },
+        { text: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/sondy91' },
       ]}
       actions={[
         {
           text: 'Hire me',
-          href: '#',
+          href: '/contact#form',
         },
       ]}
       isSticky
@@ -48,8 +48,7 @@ const metadata = {
     actions={[{ variant: 'primary', text: 'Hire me', href: getPermalink('/contact#form') }]}
   >
     <Fragment slot="subtitle">
-      I'm a Software Engineer passionate about creating well-made and efficent software that is a joy to use. <br /> With 7 years of experience building scalable, reliable applications across the tech stack. 
-      My expertise spans developing modern Single Page Applications (SPAs), crafting efficient Python FastAPI APIs, and architecting robust cloud solutions with AWS.
+      I'm a Software Engineer passionate about creating well-made and efficent software that is a joy to use.
     </Fragment>
   </Hero>
 
@@ -57,30 +56,22 @@ const metadata = {
 
   <Content
     id="about"
-    columns={3}
+    columns={2}
     items={[
       {
-        icon: 'tabler:brand-aws',
+        icon: 'tabler:brand-linkedin',
         callToAction: {
           target: '_blank',
-          text: 'AWS',
-          href: '#',
+          text: 'LinkedIn',
+          href: 'https://www.linkedin.com/in/austin-sonderman/',
         },
       },
       {
-        icon: 'tabler:brand-python',
+        icon: 'tabler:brand-github',
         callToAction: {
           target: '_blank',
-          text: 'Python',
-          href: '#',
-        },
-      },
-      {
-        icon: 'tabler:brand-golang',
-        callToAction: {
-          target: '_blank',
-          text: 'Go',
-          href: '#',
+          text: 'Github',
+          href: 'https://github.com/sondy91',
         },
       },
     ]}
@@ -93,13 +84,14 @@ const metadata = {
     <Fragment slot="content">
       <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">About me</h2>
       <p>
-        Welcome to my creative journey. My work is a testament to my commitment to bringing ideas to life, where each
-        pixel becomes a brushstroke in the canvas of imagination.
+        Software development is my playground, where curiosity meets creativity and challenges spark growth. 
+        I thrive on turning ideas into reality, whether it’s crafting intuitive interfaces, optimizing systems, or exploring the latest technologies. 
       </p>
       <br />
       <p>
-        I find inspiration in the world around me, whether through the pages of a captivating novel, the intricate
-        details of typography, or the vibrant hues of nature during my outdoor escapades.
+        With a relentless passion for learning, I stay sharp by diving into new tools, industry trends, and breakthroughs. 
+        For me, this isn’t just a career—it’s an ever-evolving journey of discovery and innovation.
+        Let’s create something amazing together!
       </p>
       <br />
       <p>If you're curious to dive deeper into my work, you can follow me:</p>
@@ -142,9 +134,43 @@ const metadata = {
     title="Education"
     items={[
       {
-        title: `Bachelor's of Science <br /> <span class="font-normal">University of Wisconsin - Milwaukee</span> <br /> <span class="text-sm font-normal">2013 - 2016</span>`,
+        title: `Bachelor's of Science - Computer Science<br /> <span class="font-normal">University of Wisconsin - Milwaukee</span> <br /> <span class="text-sm font-normal">2013 - 2016</span>`,
         icon: 'tabler:school',
       },
+      {
+        title: `Computer Science<br /> <span class="font-normal">Iowa State University</span> <br /> <span class="text-sm font-normal">2010 - 2013</span>`,
+        icon: 'tabler:school',
+      }
+    ]}
+    classes={{ container: 'max-w-3xl' }}
+  />
+
+  <!-- Steps Widget ****************** -->
+
+  <Steps
+    id="resume"
+    title="Certifications"
+    items={[
+      {
+        title: `Azure Fundamentals<br /> <span class="font-normal">Microsoft</span> <br /> <span class="text-sm font-normal">2024</span>`,
+        icon: 'tabler:certificate',
+      },
+      {
+        title: `AWS Certified Cloud Practitioner <br /> <span class="font-normal">AWS</span> <br /> <span class="text-sm font-normal">2023</span>`,
+        icon: 'tabler:certificate',
+      },
+      {
+        title: `Machine Learning Specialization<br /> <span class="font-normal">Coursera</span> <br /> <span class="text-sm font-normal">2022</span>
+        <br><span class="text-xs font-normal">Unsupervised Learning, Recommenders, Reinforcement Learning</span>
+        <br><span class="text-xs font-normal">Advanced Learning Algorithms</span>
+        <br><span class="text-xs font-normal">Supervised Machine Learning: Regression and Classification</span>`,
+        icon: 'tabler:certificate',
+      },
+      {
+        title: `Web Development <br /> <span class="font-normal">University of Wisconsin - Milwaukee</span> <br /> <span class="text-sm font-normal">2016</span>`,
+        icon: 'tabler:certificate',
+      },
+      
     ]}
     classes={{ container: 'max-w-3xl' }}
   />
@@ -153,45 +179,45 @@ const metadata = {
 
   <Features3
     title="Skills"
-    subtitle="Discover the proficiencies that allow me to bring imagination to life through design."
+    subtitle="Explore some of my strengths that drive my passion for creating exceptional software and systems."
     columns={3}
     defaultIcon="tabler:point-filled"
     items={[
       {
-        title: 'Graphic design',
-        description: 'Proficient in crafting visually appealing designs that convey messages effectively.',
+        title: 'Python',
+        description: "Proficient in leveraging Python's versatility to build robust APIs, automate workflows, and streamline complex processes.",
       },
       {
-        title: 'Branding and identity',
-        description: 'Skilled at developing cohesive brand identities, including logos and brand guidelines.',
+        title: 'FastAPI',
+        description: 'Skilled in creating high-performance, scalable APIs with FastAPI, ensuring efficiency and seamless integrations.',
       },
       {
-        title: 'User-centered design',
-        description: 'Experienced in creating user-friendly interfaces and optimizing user experiences.',
+        title: 'AWS',
+        description: 'Experienced in deploying and managing scalable applications on AWS, optimizing cloud resources, and ensuring high availability.',
       },
       {
-        title: 'Adobe Creative Suite',
-        description: 'Skilled in using Photoshop, Illustrator, and InDesign to create and edit visual elements.',
+        title: 'Streamlit',
+        description: 'Adept at building intuitive and interactive data-driven web applications using Streamlit to simplify decision-making.',
       },
       {
-        title: 'Typography',
-        description: 'Adept in selecting and manipulating typefaces to enhance design aesthetics.',
+        title: 'C#',
+        description: 'Expertise in developing reliable backend services and enterprise-level applications using C# and the .NET framework.',
       },
       {
-        title: 'Color theory',
-        description: 'Proficient in using color to evoke emotions and enhance visual harmony.',
+        title: 'Vue.js',
+        description: 'Proficient in crafting dynamic, responsive, and maintainable front-end applications with Vue.js.',
       },
       {
-        title: 'Print and digital design',
-        description: 'Knowledgeable in designing for both print materials and digital platforms.',
+        title: 'Typescript',
+        description: 'Experienced in writing clean, type-safe code with TypeScript to enhance scalability and reduce runtime errors.',
       },
       {
-        title: 'Attention to detail',
-        description: 'Diligent in maintaining precision and quality in all design work.',
+        title: 'SQL',
+        description: 'Experienced in deploying and managing scalable applications on AWS, optimizing cloud resources, and ensuring high availability.',
       },
       {
-        title: 'Adaptability',
-        description: 'Quick to adapt to new design trends, technologies, and client preferences.',
+        title: 'Opensearch/Elasticsearch',
+        description: 'Proficient in implementing powerful search and analytics capabilities using OpenSearch/Elasticsearch for real-time data insights.',
       },
     ]}
   />
