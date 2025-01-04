@@ -12,7 +12,7 @@ export interface Props {
 const { metadata } = Astro.props;
 ---
 
-<PageLayout metadata={metadata}>
+<PageLayout metadata={metadata} showActions={false}>
   <Fragment slot="announcement">
     <slot name="announcement" />
   </Fragment>
@@ -30,7 +30,7 @@ const { metadata } = Astro.props;
         actions={[
           {
             text: 'Hire me',
-            href: '#',
+            href: '/contact',
           },
         ]}
         isSticky

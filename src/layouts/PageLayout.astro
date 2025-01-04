@@ -10,9 +10,11 @@ import type { MetaData } from '~/types';
 
 export interface Props {
   metadata?: MetaData;
+  showActions?: boolean;
 }
 
-const { metadata } = Astro.props;
+const { metadata, showActions } = Astro.props;
+const actions = !showActions ? [{ text: 'Hire me', href: '/contact' }] : [];
 ---
 
 <Layout metadata={metadata}>
@@ -29,12 +31,7 @@ const { metadata } = Astro.props;
         { text: 'Blog', href: '/#blog' },
         { text: 'Github', href: 'https://github.com/sondy91' },
       ]}
-      actions={[
-        {
-          text: 'Hire me',
-          href: '#',
-        },
-      ]}
+      actions={actions}
       isSticky
       showToggleTheme
     />
