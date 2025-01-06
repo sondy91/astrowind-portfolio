@@ -227,10 +227,6 @@ export interface Stats extends Omit<Headline, 'classes'>, Widget {
   stats?: Array<Stat>;
 }
 
-export interface Pricing extends Omit<Headline, 'classes'>, Widget {
-  prices?: Array<Price>;
-}
-
 export interface Testimonials extends Omit<Headline, 'classes'>, Widget {
   testimonials?: Array<Testimonial>;
   callToAction?: CallToAction;
