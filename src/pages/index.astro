@@ -9,7 +9,7 @@ import Features3 from '~/components/widgets/Features3.astro';
 //import Testimonials from '~/components/widgets/Testimonials.astro';
 import Steps from '~/components/widgets/Steps.astro';
 import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
-import { getPermalink } from '~/utils/permalinks';
+//import { getPermalink } from '~/utils/permalinks';
 import headshot from '~/assets/images/headshot.png'
 const metadata = {
   title: 'Austin Sonderman Portfolio Site',
@@ -21,7 +21,7 @@ const metadata = {
   <Fragment slot="header">
     <Header
       links={[
-        { text: 'Home', href: '#' },
+        { text: 'Home', href: '/' },
         { text: 'About', href: '#about' },
         { text: 'Resume', href: '#resume' },
         { text: 'Porfolio', href: '#porfolio' },
@@ -48,7 +48,7 @@ const metadata = {
     actions={[]}
   >
     <Fragment slot="subtitle">
-      Hi, I'm an AI Software Engineer based in Nashville, TN with 7️⃣+ years of experience.
+      Hi, I'm a software engineer based in Nashville, TN with 7️⃣+ years of experience.
       <br/> I'm passionate about continuous learning and exploring new technologies.
       <br/>
       <br/> Outside of work, you can find me enjoying a good book 📖, watching Lord of the Rings for the 💯th time with my wife, or taking my dog 🐶 Pierogi on a walk.
