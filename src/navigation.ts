@@ -1,4 +1,3 @@
-
 export const headerData = {
   links: [
     // {
@@ -114,12 +113,9 @@ export const headerData = {
 };
 
 export const footerData = {
-  links: [
-  ],
-  secondaryLinks: [
-  ],
-  socialLinks: [
-  ],
+  links: [],
+  secondaryLinks: [],
+  socialLinks: [],
   footNote: `
     Footnote here
   `,

@@ -10,7 +10,7 @@ import Features3 from '~/components/widgets/Features3.astro';
 import Steps from '~/components/widgets/Steps.astro';
 import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 //import { getPermalink } from '~/utils/permalinks';
-import headshot from '~/assets/images/headshot.png'
+import headshot from '~/assets/images/headshot.png';
 const metadata = {
   title: 'Austin Sonderman Portfolio Site',
 };
@@ -41,19 +41,15 @@ const metadata = {
 
   <!-- Hero2 Widget ******************* -->
 
-  <Hero
-    id="hero"
-    title="Austin Sonderman"
-    tagline="AI Software Engineer | Full-Stack Developer"
-    actions={[]}
-  >
+  <Hero id="hero" title="Austin Sonderman" tagline="AI Software Engineer | Full-Stack Developer" actions={[]}>
     <Fragment slot="subtitle">
       Hi, I'm a software engineer based in Nashville, TN with 7️⃣+ years of experience.
-      <br/> I'm passionate about continuous learning and exploring new technologies.
-      <br/>
-      <br/> Outside of work, you can find me enjoying a good book 📖, watching Lord of the Rings for the 💯th time with my wife, or taking my dog 🐶 Pierogi on a walk.
-      <br/><br/><br/><br/>
-      <br/> 👇 Feel free to explore more below! 👇
+      <br /> I'm passionate about continuous learning and exploring new technologies.
+      <br />
+      <br /> Outside of work, you can find me enjoying a good book 📖, watching Lord of the Rings for the 💯th time with
+      my wife, or taking my dog 🐶 Pierogi on a walk.
+      <br /><br /><br /><br />
+      <br /> 👇 Feel free to explore more below! 👇
     </Fragment>
   </Hero>
 
@@ -89,14 +85,15 @@ const metadata = {
     <Fragment slot="content">
       <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">About me</h2>
       <p>
-        Software development is my playground, where curiosity meets creativity and challenges spark growth. 
-        I thrive on turning ideas into reality, whether it’s crafting intuitive interfaces, optimizing systems, or exploring the latest technologies. 
+        Software development is my playground, where curiosity meets creativity and challenges spark growth. I thrive on
+        turning ideas into reality, whether it’s crafting intuitive interfaces, optimizing systems, or exploring the
+        latest technologies.
       </p>
       <br />
       <p>
-        With a relentless passion for learning, I stay sharp by diving into new tools, industry trends, and breakthroughs. 
-        For me, this isn’t just a career—it’s an ever-evolving journey of discovery and innovation.
-        Let’s create something amazing together!
+        With a relentless passion for learning, I stay sharp by diving into new tools, industry trends, and
+        breakthroughs. For me, this isn’t just a career—it’s an ever-evolving journey of discovery and innovation. Let’s
+        create something amazing together!
       </p>
       <br />
       <p>If you're curious to dive deeper into my work, you can follow me:</p>
@@ -145,7 +142,7 @@ const metadata = {
       {
         title: `Computer Science<br /> <span class="font-normal">Iowa State University</span> <br /> <span class="text-sm font-normal">2010 - 2013</span>`,
         icon: 'tabler:school',
-      }
+      },
     ]}
     classes={{ container: 'max-w-3xl' }}
   />
@@ -175,7 +172,6 @@ const metadata = {
         title: `Web Development <br /> <span class="font-normal">University of Wisconsin - Milwaukee</span> <br /> <span class="text-sm font-normal">2016</span>`,
         icon: 'tabler:certificate',
       },
-      
     ]}
     classes={{ container: 'max-w-3xl' }}
   />
@@ -190,23 +186,28 @@ const metadata = {
     items={[
       {
         title: 'Python',
-        description: "Proficient in leveraging Python's versatility to build robust APIs, automate workflows, and streamline complex processes.",
+        description:
+          "Proficient in leveraging Python's versatility to build robust APIs, automate workflows, and streamline complex processes.",
       },
       {
         title: 'FastAPI',
-        description: 'Skilled in creating high-performance, scalable APIs with FastAPI, ensuring efficiency and seamless integrations.',
+        description:
+          'Skilled in creating high-performance, scalable APIs with FastAPI, ensuring efficiency and seamless integrations.',
       },
       {
         title: 'AWS',
-        description: 'Experienced in deploying and managing scalable applications on AWS, optimizing cloud resources, and ensuring high availability.',
+        description:
+          'Experienced in deploying and managing scalable applications on AWS, optimizing cloud resources, and ensuring high availability.',
       },
       {
         title: 'Streamlit',
-        description: 'Adept at building intuitive and interactive data-driven web applications using Streamlit to simplify decision-making.',
+        description:
+          'Adept at building intuitive and interactive data-driven web applications using Streamlit to simplify decision-making.',
       },
       {
         title: 'C#',
-        description: 'Expertise in developing reliable backend services and enterprise-level applications using C# and the .NET framework.',
+        description:
+          'Expertise in developing reliable backend services and enterprise-level applications using C# and the .NET framework.',
       },
       {
         title: 'Vue.js',
@@ -214,15 +215,18 @@ const metadata = {
       },
       {
         title: 'Typescript',
-        description: 'Experienced in writing clean, type-safe code with TypeScript to enhance scalability and reduce runtime errors.',
+        description:
+          'Experienced in writing clean, type-safe code with TypeScript to enhance scalability and reduce runtime errors.',
       },
       {
         title: 'SQL',
-        description: 'Experienced in deploying and managing scalable applications on AWS, optimizing cloud resources, and ensuring high availability.',
+        description:
+          'Experienced in deploying and managing scalable applications on AWS, optimizing cloud resources, and ensuring high availability.',
       },
       {
         title: 'Opensearch/Elasticsearch',
-        description: 'Proficient in implementing powerful search and analytics capabilities using OpenSearch/Elasticsearch for real-time data insights.',
+        description:
+          'Proficient in implementing powerful search and analytics capabilities using OpenSearch/Elasticsearch for real-time data insights.',
       },
     ]}
   />
