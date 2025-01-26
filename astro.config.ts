@@ -18,6 +18,8 @@ import { readingTimeRemarkPlugin, responsiveTablesRehypePlugin, lazyImagesRehype
 import sanity from '@sanity/astro';
 import react from '@astrojs/react';
 
+import vercel from '@astrojs/vercel';
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const hasExternalScripts = false;
@@ -81,7 +83,7 @@ export default defineConfig({
   ],
 
   image: {
-    domains: ['cdn.pixabay.com'],
+    domains: ['cdn.sanity.io'],
   },
 
   markdown: {
@@ -96,4 +98,6 @@ export default defineConfig({
       },
     },
   },
+
+  adapter: vercel(),
 });
