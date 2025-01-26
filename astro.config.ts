@@ -18,8 +18,6 @@ import { readingTimeRemarkPlugin, responsiveTablesRehypePlugin, lazyImagesRehype
 import sanity from '@sanity/astro';
 import react from '@astrojs/react';
 
-import vercel from '@astrojs/vercel';
-
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const hasExternalScripts = false;
@@ -98,6 +96,4 @@ export default defineConfig({
       },
     },
   },
-
-  adapter: vercel(),
 });
