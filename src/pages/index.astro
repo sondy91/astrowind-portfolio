@@ -4,15 +4,15 @@ import Layout from '~/layouts/PageLayout.astro';
 import Header from '~/components/widgets/Header.astro';
 import Hero from '~/components/widgets/Hero.astro';
 import Content from '~/components/widgets/Content.astro';
-import CallToAction from '~/components/widgets/CallToAction.astro';
+//import CallToAction from '~/components/widgets/CallToAction.astro';
 import Features3 from '~/components/widgets/Features3.astro';
-import Testimonials from '~/components/widgets/Testimonials.astro';
+//import Testimonials from '~/components/widgets/Testimonials.astro';
 import Steps from '~/components/widgets/Steps.astro';
 import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
-import { getPermalink } from '~/utils/permalinks';
-import headshot from '~/assets/images/headshot.png'
+//import { getPermalink } from '~/utils/permalinks';
+import headshot from '~/assets/images/headshot.png';
 const metadata = {
-  title: 'Personal Homepage Demo',
+  title: 'Austin Sonderman Portfolio Site',
 };
 ---
 
@@ -21,17 +21,17 @@ const metadata = {
   <Fragment slot="header">
     <Header
       links={[
-        { text: 'Home', href: '#' },
+        { text: 'Home', href: '/' },
         { text: 'About', href: '#about' },
         { text: 'Resume', href: '#resume' },
         { text: 'Porfolio', href: '#porfolio' },
         { text: 'Blog', href: '#blog' },
-        { text: 'Github', href: 'https://github.com/sondy91' },
+        { text: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/sondy91' },
       ]}
       actions={[
         {
-          text: 'Hire me',
-          href: '#',
+          text: 'Contact me',
+          href: '/contact',
         },
       ]}
       isSticky
@@ -41,15 +41,15 @@ const metadata = {
 
   <!-- Hero2 Widget ******************* -->
 
-  <Hero
-    id="hero"
-    title="Austin Sonderman"
-    tagline="Personal Portfolio"
-    actions={[{ variant: 'primary', text: 'Hire me', href: getPermalink('/contact#form') }]}
-  >
+  <Hero id="hero" title="Austin Sonderman" tagline="AI Software Engineer | Full-Stack Developer" actions={[]}>
     <Fragment slot="subtitle">
-      I'm a Software Engineer passionate about creating well-made and efficent software that is a joy to use. <br /> With 7 years of experience building scalable, reliable applications across the tech stack. 
-      My expertise spans developing modern Single Page Applications (SPAs), crafting efficient Python FastAPI APIs, and architecting robust cloud solutions with AWS.
+      Hi, I'm a software engineer based in Nashville, TN with 7️⃣+ years of experience.
+      <br /> I'm passionate about continuous learning and exploring new technologies.
+      <br />
+      <br /> Outside of work, you can find me enjoying a good book 📖, watching Lord of the Rings for the 💯th time with
+      my wife, or taking my dog 🐶 Pierogi on a walk.
+      <br /><br /><br /><br />
+      <br /> 👇 Feel free to explore more below! 👇
     </Fragment>
   </Hero>
 
@@ -57,30 +57,22 @@ const metadata = {
 
   <Content
     id="about"
-    columns={3}
+    columns={2}
     items={[
       {
-        icon: 'tabler:brand-aws',
+        icon: 'tabler:brand-linkedin',
         callToAction: {
           target: '_blank',
-          text: 'AWS',
-          href: '#',
+          text: 'LinkedIn',
+          href: 'https://www.linkedin.com/in/austin-sonderman/',
         },
       },
       {
-        icon: 'tabler:brand-python',
+        icon: 'tabler:brand-github',
         callToAction: {
           target: '_blank',
-          text: 'Python',
-          href: '#',
-        },
-      },
-      {
-        icon: 'tabler:brand-golang',
-        callToAction: {
-          target: '_blank',
-          text: 'Go',
-          href: '#',
+          text: 'Github',
+          href: 'https://github.com/sondy91',
         },
       },
     ]}
@@ -93,13 +85,15 @@ const metadata = {
     <Fragment slot="content">
       <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">About me</h2>
       <p>
-        Welcome to my creative journey. My work is a testament to my commitment to bringing ideas to life, where each
-        pixel becomes a brushstroke in the canvas of imagination.
+        Software development is my playground, where curiosity meets creativity and challenges spark growth. I thrive on
+        turning ideas into reality, whether it’s crafting intuitive interfaces, optimizing systems, or exploring the
+        latest technologies.
       </p>
       <br />
       <p>
-        I find inspiration in the world around me, whether through the pages of a captivating novel, the intricate
-        details of typography, or the vibrant hues of nature during my outdoor escapades.
+        With a relentless passion for learning, I stay sharp by diving into new tools, industry trends, and
+        breakthroughs. For me, this isn’t just a career—it’s an ever-evolving journey of discovery and innovation. Let’s
+        create something amazing together!
       </p>
       <br />
       <p>If you're curious to dive deeper into my work, you can follow me:</p>
@@ -142,8 +136,41 @@ const metadata = {
     title="Education"
     items={[
       {
-        title: `Bachelor's of Science <br /> <span class="font-normal">University of Wisconsin - Milwaukee</span> <br /> <span class="text-sm font-normal">2013 - 2016</span>`,
+        title: `Bachelor's of Science - Computer Science<br /> <span class="font-normal">University of Wisconsin - Milwaukee</span> <br /> <span class="text-sm font-normal">2013 - 2016</span>`,
         icon: 'tabler:school',
+      },
+      {
+        title: `Computer Science<br /> <span class="font-normal">Iowa State University</span> <br /> <span class="text-sm font-normal">2010 - 2013</span>`,
+        icon: 'tabler:school',
+      },
+    ]}
+    classes={{ container: 'max-w-3xl' }}
+  />
+
+  <!-- Steps Widget ****************** -->
+
+  <Steps
+    id="resume"
+    title="Certifications"
+    items={[
+      {
+        title: `Azure Fundamentals<br /> <span class="font-normal">Microsoft</span> <br /> <span class="text-sm font-normal">2024</span>`,
+        icon: 'tabler:certificate',
+      },
+      {
+        title: `AWS Certified Cloud Practitioner <br /> <span class="font-normal">AWS</span> <br /> <span class="text-sm font-normal">2023</span>`,
+        icon: 'tabler:certificate',
+      },
+      {
+        title: `Machine Learning Specialization<br /> <span class="font-normal">Coursera</span> <br /> <span class="text-sm font-normal">2022</span>
+        <br><span class="text-xs font-normal">Unsupervised Learning, Recommenders, Reinforcement Learning</span>
+        <br><span class="text-xs font-normal">Advanced Learning Algorithms</span>
+        <br><span class="text-xs font-normal">Supervised Machine Learning: Regression and Classification</span>`,
+        icon: 'tabler:certificate',
+      },
+      {
+        title: `Web Development <br /> <span class="font-normal">University of Wisconsin - Milwaukee</span> <br /> <span class="text-sm font-normal">2016</span>`,
+        icon: 'tabler:certificate',
       },
     ]}
     classes={{ container: 'max-w-3xl' }}
@@ -153,45 +180,53 @@ const metadata = {
 
   <Features3
     title="Skills"
-    subtitle="Discover the proficiencies that allow me to bring imagination to life through design."
+    subtitle="Explore some of my strengths that drive my passion for creating exceptional software and systems."
     columns={3}
     defaultIcon="tabler:point-filled"
     items={[
       {
-        title: 'Graphic design',
-        description: 'Proficient in crafting visually appealing designs that convey messages effectively.',
+        title: 'Python',
+        description:
+          "Proficient in leveraging Python's versatility to build robust APIs, automate workflows, and streamline complex processes.",
       },
       {
-        title: 'Branding and identity',
-        description: 'Skilled at developing cohesive brand identities, including logos and brand guidelines.',
+        title: 'FastAPI',
+        description:
+          'Skilled in creating high-performance, scalable APIs with FastAPI, ensuring efficiency and seamless integrations.',
       },
       {
-        title: 'User-centered design',
-        description: 'Experienced in creating user-friendly interfaces and optimizing user experiences.',
+        title: 'AWS',
+        description:
+          'Experienced in deploying and managing scalable applications on AWS, optimizing cloud resources, and ensuring high availability.',
       },
       {
-        title: 'Adobe Creative Suite',
-        description: 'Skilled in using Photoshop, Illustrator, and InDesign to create and edit visual elements.',
+        title: 'Streamlit',
+        description:
+          'Adept at building intuitive and interactive data-driven web applications using Streamlit to simplify decision-making.',
       },
       {
-        title: 'Typography',
-        description: 'Adept in selecting and manipulating typefaces to enhance design aesthetics.',
+        title: 'C#',
+        description:
+          'Expertise in developing reliable backend services and enterprise-level applications using C# and the .NET framework.',
       },
       {
-        title: 'Color theory',
-        description: 'Proficient in using color to evoke emotions and enhance visual harmony.',
+        title: 'Vue.js',
+        description: 'Proficient in crafting dynamic, responsive, and maintainable front-end applications with Vue.js.',
       },
       {
-        title: 'Print and digital design',
-        description: 'Knowledgeable in designing for both print materials and digital platforms.',
+        title: 'Typescript',
+        description:
+          'Experienced in writing clean, type-safe code with TypeScript to enhance scalability and reduce runtime errors.',
       },
       {
-        title: 'Attention to detail',
-        description: 'Diligent in maintaining precision and quality in all design work.',
+        title: 'SQL',
+        description:
+          'Experienced in deploying and managing scalable applications on AWS, optimizing cloud resources, and ensuring high availability.',
       },
       {
-        title: 'Adaptability',
-        description: 'Quick to adapt to new design trends, technologies, and client preferences.',
+        title: 'Opensearch/Elasticsearch',
+        description:
+          'Proficient in implementing powerful search and analytics capabilities using OpenSearch/Elasticsearch for real-time data insights.',
       },
     ]}
   />
@@ -200,24 +235,24 @@ const metadata = {
 
   <Content
     id="porfolio"
-    title="Elevating visual narratives"
-    subtitle="Embark on a design journey that surpasses pixels, entering a realm of imagination. Explore my portfolio, where passion and creativity converge to shape enthralling visual narratives."
+    title="From Concepts to Code"
+    subtitle="Step into a world of innovation and craftsmanship, where technology and creativity unite. Explore my portfolio to see ideas transformed into impactful digital experiences."
     isReversed
     items={[
       {
         title: 'Description:',
         description:
-          'Developed a comprehensive brand identity for a tech startup, Tech Innovators, specializing in disruptive innovations. The goal was to convey a modern yet approachable image that resonated with both corporate clients and tech enthusiasts.',
+          'Developed an intuitive personal finance chatbot to simplify budgeting, track spending, and provide actionable insights. The goal was to create an engaging, user-friendly experience that caters to both beginners and experienced finance enthusiasts.',
       },
       {
         title: 'Role:',
         description:
-          'Led the entire branding process from concept to execution. Created a dynamic logo that symbolized innovation, selected a vibrant color palette, and I designed corporate stationery, website graphics, and social media assets.',
+          'Led the development of a personal finance chatbot from concept to deployment. Designed and implemented features for budgeting, spending tracking, and providing actionable financial insights, ensuring a seamless user experience from start to finish.',
       },
     ]}
     image={{
-      src: 'https://images.unsplash.com/photo-1658248165252-71e116af1b34?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=928&q=80',
-      alt: 'Tech Design Image',
+      src: 'https://cdn.sanity.io/images/0j9fbpsg/production/a8e0cd90dff24af5aa31d89206a49a08374ae0c3-640x427.jpg',
+      alt: 'Personal Finance Image',
     }}
     callToAction={{
       target: '_blank',
@@ -228,7 +263,7 @@ const metadata = {
   >
     <Fragment slot="content">
       <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        Project 1: <br /><span class="text-2xl">Brand identity for tech innovators</span>
+        Personal Finance Chatbot: <br /><span class="text-2xl">An assistant to help you with your finances</span>
       </h3>
     </Fragment>
 
@@ -239,7 +274,7 @@ const metadata = {
 
   <!-- Content Widget **************** -->
 
-  <Content
+  <!-- <Content
     isReversed
     isAfterContent={true}
     items={[
@@ -273,11 +308,11 @@ const metadata = {
     <Fragment slot="bg">
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
     </Fragment>
-  </Content>
+  </Content> -->
 
   <!-- Content Widget **************** -->
 
-  <Content
+  <!-- <Content
     isReversed
     isAfterContent={true}
     items={[
@@ -310,11 +345,11 @@ const metadata = {
     <Fragment slot="bg">
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
     </Fragment>
-  </Content>
+  </Content> -->
 
   <!-- Testimonials Widget *********** -->
 
-  <Testimonials
+  <!-- <Testimonials
     title="Client testimonials"
     subtitle="Discover what clients have to say about their experiences working with me."
     testimonials={[
@@ -373,28 +408,28 @@ const metadata = {
         },
       },
     ]}
-  />
+  /> -->
 
   <!-- CallToAction Widget *********** -->
 
-  <CallToAction
+  <!-- <CallToAction
     title="Let's create together"
     subtitle="Ready to transform your vision into captivating designs?"
     actions={[
       {
         variant: 'primary',
-        text: 'Hire me',
+        text: 'Contact me',
         href: '/',
       },
     ]}
-  />
+  /> -->
 
   <!-- BlogLatestPost Widget **************** -->
 
   <BlogLatestPosts
     id="blog"
-    title="Explore my insightful articles on my blog"
-    information={`Dive into a realm of design wisdom and creative inspiration, where you'll find invaluable insights, practical tips, and captivating narratives that elevate and enrich your creative journey.`}
+    title="Explore the ideas that keep me coding and creating."
+    information={`Uncover insights, tips, and ideas on software development and technology to inspire and empower your journey. Hopefully, you'll discover something new and exciting along the way.`}
   >
     <Fragment slot="bg">
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
