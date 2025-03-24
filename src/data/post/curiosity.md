@@ -1,6 +1,6 @@
 ---
 publishDate: 2024-03-23T20:12:00Z
-title: The Question That Changed Everything: How Curiosity Fuels Growth
+title: "The Question That Changed Everything: How Curiosity Fuels Growth"
 excerpt: Curiosity fuels growth, innovation, and problem-solving—learn how to cultivate it in yourself and inspire it in others.
 image: https://cdn.sanity.io/images/0j9fbpsg/production/398bc38b5d660484a35bb7ad0ac73dfeac414aa9-5827x3602.jpg
 category: Learning
@@ -8,8 +8,6 @@ tags:
   - learning
   - software engineering
 ---
-
-# The Question That Changed Everything: How Curiosity Fuels Growth
 
 ## A Moment of Curiosity
 
