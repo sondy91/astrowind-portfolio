@@ -43,3 +43,6 @@ pnpm-lock.yaml
 
 # Dotenv and similar local-only files
 *.local
+
+# Vercel
+.vercel
