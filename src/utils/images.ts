@@ -75,10 +75,19 @@ export const adaptOpenGraphImages = async (
 
         if (
           typeof resolvedImage === 'string' &&
-          (resolvedImage.startsWith('http://') || resolvedImage.startsWith('https://')) &&
-          isUnpicCompatible(resolvedImage)
+          (resolvedImage.startsWith('http://') || resolvedImage.startsWith('https://'))
         ) {
-          _image = (await unpicOptimizer(resolvedImage, [defaultWidth], defaultWidth, defaultHeight, 'jpg'))[0];
+          if (resolvedImage.includes('/og/') && resolvedImage.endsWith('.png')) {
+            return {
+              url: resolvedImage,
+              width: image.width || defaultWidth,
+              height: image.height || defaultHeight,
+            };
+          }
+
+          if (isUnpicCompatible(resolvedImage)) {
+            _image = (await unpicOptimizer(resolvedImage, [defaultWidth], defaultWidth, defaultHeight, 'jpg'))[0];
+          }
         } else if (resolvedImage) {
           const dimensions =
             typeof resolvedImage !== 'string' && resolvedImage?.width <= defaultWidth

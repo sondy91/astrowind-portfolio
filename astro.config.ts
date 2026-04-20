@@ -27,7 +27,7 @@ const whenExternalScripts = (items: (() => AstroIntegration) | (() => AstroInteg
   hasExternalScripts ? (Array.isArray(items) ? items.map((item) => item()) : [items()]) : [];
 
 export default defineConfig({
-  output: 'static',
+  output: 'server',
 
   integrations: [
     tailwind({
@@ -83,7 +83,8 @@ export default defineConfig({
   ],
 
   image: {
-    domains: ['cdn.sanity.io'],
+    domains: ['cdn.sanity.io', 'austinsonderman.vercel.app'],
+    remotePatterns: [{ protocol: 'https' }],
   },
 
   markdown: {
