@@ -9,6 +9,7 @@ import Features3 from '~/components/widgets/Features3.astro';
 //import Testimonials from '~/components/widgets/Testimonials.astro';
 import Steps from '~/components/widgets/Steps.astro';
 import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
+import StructuredData from '~/components/common/StructuredData.astro';
 //import { getPermalink } from '~/utils/permalinks';
 import headshot from '~/assets/images/headshot.png';
 const metadata = {
@@ -304,4 +305,5 @@ const yearsOfExperienceEmoji = yearsOfExperience
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
     </Fragment>
   </BlogLatestPosts>
+  <StructuredData type="person" />
 </Layout>

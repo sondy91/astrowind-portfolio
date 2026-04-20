@@ -1,0 +1,66 @@
+---
+import { SITE } from 'astrowind:config';
+import type { Post } from '~/types';
+
+export interface Props {
+  post?: Post;
+  url?: string;
+  type?: 'website' | 'article' | 'person';
+}
+
+const { post, url, type = 'website' } = Astro.props;
+
+const structuredData = (() => {
+  if (type === 'article' && post) {
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'BlogPosting',
+      headline: post.title,
+      description: post.excerpt,
+      image: post.image || `${Astro.site}og/${post.slug}.png`,
+      datePublished: post.publishDate?.toISOString(),
+      dateModified: (post.updateDate || post.publishDate)?.toISOString(),
+      author: {
+        '@type': 'Person',
+        name: post.author || 'Austin Sonderman',
+        url: SITE.site,
+      },
+      publisher: {
+        '@type': 'Person',
+        name: 'Austin Sonderman',
+        url: SITE.site,
+      },
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': url || Astro.url.toString(),
+      },
+      keywords: post.tags?.join(', '),
+    };
+  }
+
+  if (type === 'person') {
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'Person',
+      name: 'Austin Sonderman',
+      url: SITE.site,
+      jobTitle: 'Software Engineer',
+      description: 'Software Engineer specializing in AI and Full-Stack development',
+      sameAs: [
+        'https://github.com/austinsonderman',
+        'https://linkedin.com/in/austinsonderman',
+      ],
+    };
+  }
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: SITE.name,
+    url: SITE.site,
+    description: 'Personal Portfolio for a Software Engineer in AI and Full-Stack development',
+  };
+})();
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
