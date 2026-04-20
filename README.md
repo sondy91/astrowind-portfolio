@@ -20,4 +20,4 @@ All commands are run from the root of the project, from a terminal:
 | `pnpm run preview`   | Preview your build locally, before deploying       |
 | `pnpm run check`     | Check your project for errors                      |
 | `pnpm run fix`       | Run Eslint and format codes with Prettier          |
-| `pnpm run astro ...` | Run CLI commands like `astro add`, `astro preview` 
+| `pnpm run astro ...` | Run CLI commands like `astro add`, `astro preview` |

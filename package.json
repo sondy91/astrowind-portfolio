@@ -1,25 +1,20 @@
 {
   "name": "@onwidget/astrowind",
   "version": "1.0.0-beta.49",
+  "private": true,
   "description": "AstroWind: A free template using Astro 5.0 and Tailwind CSS. Astro starter theme.",
   "type": "module",
-  "private": true,
-  "engines": {
-    "node": "^18.17.1 || ^20.3.0 || >= 21.0.0"
-  },
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "check": "npm run check:astro && npm run check:eslint && npm run check:prettier",
+    "check": "vp check",
     "check:astro": "astro check",
-    "check:eslint": "eslint .",
-    "check:prettier": "prettier --check .",
-    "fix": "npm run fix:eslint && npm run fix:prettier",
-    "fix:eslint": "eslint --fix .",
-    "fix:prettier": "prettier -w ."
+    "lint": "vp lint",
+    "fmt": "vp fmt",
+    "fix": "vp check --fix"
   },
   "dependencies": {
     "@astrojs/react": "^4.2.1",
@@ -77,6 +72,11 @@
     "tailwindcss": "^3.4.16",
     "typescript": "^5.7.2",
     "typescript-eslint": "^8.17.0",
-    "unist-util-visit": "^5.0.0"
-  }
+    "unist-util-visit": "^5.0.0",
+    "vite-plus": "^0.1.18"
+  },
+  "engines": {
+    "node": "^18.17.1 || ^20.3.0 || >= 21.0.0"
+  },
+  "packageManager": "pnpm@9.15.4"
 }
