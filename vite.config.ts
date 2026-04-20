@@ -28,4 +28,9 @@ export default defineConfig({
       },
     },
   },
+
+  // Pre-commit hooks configuration
+  staged: {
+    '*.{js,jsx,ts,tsx,astro,vue,svelte,json,yaml,yml,md}': 'vp check --fix',
+  },
 });
