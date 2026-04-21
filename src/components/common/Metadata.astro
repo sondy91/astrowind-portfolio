@@ -1,13 +1,8 @@
 ---
 import merge from 'lodash.merge';
-import { AstroSeo } from '@astrolib/seo';
-
-import type { Props as AstroSeoProps } from '@astrolib/seo';
-
 import { SITE, METADATA, I18N } from 'astrowind:config';
 import type { MetaData } from '~/types';
 import { getCanonical } from '~/utils/permalinks';
-
 import { adaptOpenGraphImages } from '~/utils/images';
 
 export interface Props extends MetaData {
@@ -24,45 +19,53 @@ const {
   twitter = {},
 } = Astro.props;
 
-const seoProps: AstroSeoProps = merge(
+const finalTitle = title || METADATA?.title?.default || SITE?.name;
+const titleTemplate = ignoreTitleTemplate ? finalTitle : (METADATA?.title?.template || '%s').replace('%s', finalTitle);
+const finalDescription = description || METADATA?.description;
+const noindex = typeof robots?.index !== 'undefined' ? !robots.index : (typeof METADATA?.robots?.index !== 'undefined' ? !METADATA.robots.index : false);
+const nofollow = typeof robots?.follow !== 'undefined' ? !robots.follow : (typeof METADATA?.robots?.follow !== 'undefined' ? !METADATA.robots.follow : false);
+
+const ogData = merge(
   {
-    title: '',
-    titleTemplate: '%s',
-    canonical: canonical,
-    noindex: true,
-    nofollow: true,
-    description: undefined,
-    openGraph: {
-      url: canonical,
-      site_name: SITE?.name,
-      images: [],
-      locale: I18N?.language || 'en',
-      type: 'website',
-    },
-    twitter: {
-      cardType: openGraph?.images?.length ? 'summary_large_image' : 'summary',
-    },
+    url: canonical,
+    site_name: SITE?.name,
+    images: [],
+    locale: I18N?.language || 'en',
+    type: 'website',
   },
-  {
-    title: METADATA?.title?.default,
-    titleTemplate: METADATA?.title?.template,
-    noindex: typeof METADATA?.robots?.index !== 'undefined' ? !METADATA.robots.index : undefined,
-    nofollow: typeof METADATA?.robots?.follow !== 'undefined' ? !METADATA.robots.follow : undefined,
-    description: METADATA?.description,
-    openGraph: METADATA?.openGraph,
-    twitter: METADATA?.twitter,
-  },
-  {
-    title: title,
-    titleTemplate: ignoreTitleTemplate ? '%s' : undefined,
-    canonical: canonical,
-    noindex: typeof robots?.index !== 'undefined' ? !robots.index : undefined,
-    nofollow: typeof robots?.follow !== 'undefined' ? !robots.follow : undefined,
-    description: description,
-    openGraph: { url: canonical, ...openGraph },
-    twitter: twitter,
-  }
+  METADATA?.openGraph,
+  { url: canonical, ...openGraph }
 );
+
+const adaptedOgData = await adaptOpenGraphImages(ogData, Astro.site);
+const twitterCard = twitter?.card || (adaptedOgData?.images?.length ? 'summary_large_image' : 'summary');
 ---
 
-<AstroSeo {...{ ...seoProps, openGraph: await adaptOpenGraphImages(seoProps?.openGraph, Astro.site) }} />
+<title>{titleTemplate}</title>
+<meta name="description" content={finalDescription} />
+<link rel="canonical" href={canonical} />
+
+{noindex && <meta name="robots" content="noindex" />}
+{nofollow && <meta name="robots" content="nofollow" />}
+{(noindex || nofollow) && <meta name="robots" content={`${noindex ? 'noindex' : 'index'},${nofollow ? 'nofollow' : 'follow'}`} />}
+
+<meta property="og:title" content={finalTitle} />
+<meta property="og:description" content={finalDescription} />
+<meta property="og:url" content={adaptedOgData?.url} />
+<meta property="og:site_name" content={adaptedOgData?.site_name} />
+<meta property="og:type" content={adaptedOgData?.type} />
+<meta property="og:locale" content={adaptedOgData?.locale} />
+{adaptedOgData?.images?.map((image: any) => (
+  <>
+    <meta property="og:image" content={image.url} />
+    {image.width && <meta property="og:image:width" content={String(image.width)} />}
+    {image.height && <meta property="og:image:height" content={String(image.height)} />}
+  </>
+))}
+
+<meta name="twitter:card" content={twitterCard} />
+<meta name="twitter:title" content={finalTitle} />
+<meta name="twitter:description" content={finalDescription} />
+{twitter?.site && <meta name="twitter:site" content={twitter.site} />}
+{twitter?.creator && <meta name="twitter:creator" content={twitter.creator} />}
+{adaptedOgData?.images?.[0] && <meta name="twitter:image" content={adaptedOgData.images[0].url} />}
