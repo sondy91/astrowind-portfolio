@@ -1,0 +1,73 @@
+---
+import { Icon } from 'astro-icon/components';
+---
+
+<div class="relative max-w-2xl mx-auto mb-12 px-4">
+  <div class="relative">
+    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+      <Icon name="tabler:search" class="h-5 w-5 text-gray-400 dark:text-gray-500" />
+    </div>
+    <div id="pagefind-search" class="pl-12"></div>
+  </div>
+</div>
+
+<script>
+  async function loadPagefind() {
+    const pagefind = await import('/pagefind/pagefind.js');
+    await pagefind.options({
+      bundlePath: '/pagefind/',
+    });
+
+    const container = document.getElementById('pagefind-search');
+    if (container) {
+      new pagefind.PagefindUI({
+        element: container,
+        showImages: false,
+        excerptLength: 20,
+        resetStyles: false,
+      });
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', loadPagefind);
+  } else {
+    loadPagefind();
+  }
+
+  document.addEventListener('astro:page-load', loadPagefind);
+</script>
+
+<style is:global>
+  #pagefind-search .pagefind-ui__search-input {
+    @apply w-full py-3 pr-4 pl-2 text-base border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-slate-900 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent;
+  }
+
+  #pagefind-search .pagefind-ui__results {
+    @apply mt-4;
+  }
+
+  #pagefind-search .pagefind-ui__result {
+    @apply mb-4 p-4 border border-gray-200 dark:border-gray-700 rounded-lg bg-white dark:bg-slate-900 hover:border-primary dark:hover:border-primary transition-colors;
+  }
+
+  #pagefind-search .pagefind-ui__result-title {
+    @apply text-lg font-semibold text-gray-900 dark:text-white mb-2;
+  }
+
+  #pagefind-search .pagefind-ui__result-excerpt {
+    @apply text-sm text-gray-600 dark:text-gray-400;
+  }
+
+  #pagefind-search .pagefind-ui__result-link {
+    @apply no-underline hover:no-underline;
+  }
+
+  #pagefind-search .pagefind-ui__message {
+    @apply text-gray-600 dark:text-gray-400 py-4 text-center;
+  }
+
+  #pagefind-search mark {
+    @apply bg-yellow-200 dark:bg-yellow-900 text-gray-900 dark:text-white px-1 rounded;
+  }
+</style>

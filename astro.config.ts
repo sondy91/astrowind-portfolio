@@ -17,6 +17,7 @@ import { readingTimeRemarkPlugin, responsiveTablesRehypePlugin, lazyImagesRehype
 
 import sanity from '@sanity/astro';
 import react from '@astrojs/react';
+import pagefind from 'astro-pagefind';
 
 import vercel from '@astrojs/vercel';
 
@@ -27,7 +28,7 @@ const whenExternalScripts = (items: (() => AstroIntegration) | (() => AstroInteg
   hasExternalScripts ? (Array.isArray(items) ? items.map((item) => item()) : [items()]) : [];
 
 export default defineConfig({
-  output: 'server',
+  output: 'static',
 
   integrations: [
     tailwind({
@@ -80,6 +81,7 @@ export default defineConfig({
       studioBasePath: '/admin',
     }),
     react(),
+    pagefind(),
   ],
 
   image: {
@@ -96,6 +98,11 @@ export default defineConfig({
     resolve: {
       alias: {
         '~': path.resolve(__dirname, './src'),
+      },
+    },
+    build: {
+      rollupOptions: {
+        external: ['/pagefind/pagefind.js'],
       },
     },
   },
