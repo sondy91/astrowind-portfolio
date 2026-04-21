@@ -4,6 +4,7 @@ import typographyPlugin from '@tailwindcss/typography';
 
 export default {
   content: ['./src/**/*.{astro,html,js,jsx,json,md,mdx,svelte,ts,tsx,vue}'],
+  safelist: ['dark', 'intersect-once', 'intersect-quarter', 'intersect-half', 'intersect-full', 'intersect-no-queue'],
   theme: {
     extend: {
       colors: {
