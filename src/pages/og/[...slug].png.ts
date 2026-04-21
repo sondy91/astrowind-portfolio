@@ -2,15 +2,18 @@ import { ImageResponse } from '@vercel/og';
 import { getCollection } from 'astro:content';
 import type { APIRoute } from 'astro';
 
-export const prerender = false;
-
-export const GET: APIRoute = async ({ params }) => {
+export async function getStaticPaths() {
   const posts = await getCollection('post');
-  const post = posts.find((p) => p.slug === params.slug);
+  return posts
+    .filter((post) => post.slug && post.slug.trim() !== '')
+    .map((post) => ({
+      params: { slug: post.slug },
+      props: { post },
+    }));
+}
 
-  if (!post) {
-    return new Response('Not found', { status: 404 });
-  }
+export const GET: APIRoute = async ({ props }) => {
+  const { post } = props;
 
   const html = {
     type: 'div',
