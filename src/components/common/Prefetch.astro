@@ -1,0 +1,70 @@
+---
+// Prefetch links on hover for faster navigation
+---
+
+<script>
+  function setupPrefetch() {
+    const prefetchedUrls = new Set<string>();
+    
+    function prefetchLink(url: string) {
+      if (prefetchedUrls.has(url)) return;
+      
+      const link = document.createElement('link');
+      link.rel = 'prefetch';
+      link.href = url;
+      link.as = 'document';
+      document.head.appendChild(link);
+      
+      prefetchedUrls.add(url);
+    }
+
+    function shouldPrefetch(element: HTMLAnchorElement): boolean {
+      if (!element.href) return false;
+      if (element.target === '_blank') return false;
+      if (element.download) return false;
+      
+      const url = new URL(element.href, window.location.href);
+      if (url.origin !== window.location.origin) return false;
+      if (url.pathname === window.location.pathname) return false;
+      
+      return true;
+    }
+
+    function handleMouseOver(event: Event) {
+      const target = event.target as HTMLElement;
+      const link = target.closest('a') as HTMLAnchorElement;
+      
+      if (link && shouldPrefetch(link)) {
+        prefetchLink(link.href);
+      }
+    }
+
+    document.addEventListener('mouseover', handleMouseOver, { passive: true });
+    
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const link = entry.target as HTMLAnchorElement;
+            if (shouldPrefetch(link)) {
+              prefetchLink(link.href);
+            }
+          }
+        });
+      },
+      { rootMargin: '50px' }
+    );
+
+    document.querySelectorAll('a[data-prefetch]').forEach((link) => {
+      observer.observe(link);
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupPrefetch);
+  } else {
+    setupPrefetch();
+  }
+
+  document.addEventListener('astro:page-load', setupPrefetch);
+</script>
