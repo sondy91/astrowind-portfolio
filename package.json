@@ -7,7 +7,8 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build",
+    "build": "astro build && node scripts/extract-critical-css.mjs",
+    "build:astro": "astro build",
     "preview": "astro preview",
     "astro": "astro",
     "check": "vp check",
@@ -56,6 +57,8 @@
     "@types/lodash.merge": "^4.6.9",
     "@types/mdx": "^2.0.13",
     "astro-compress": "2.4.1",
+    "critical": "^7.2.1",
+    "glob": "^13.0.6",
     "js-yaml": "^4.1.0",
     "mdast-util-to-string": "^4.0.0",
     "pagefind": "^1.5.2",
