@@ -1,0 +1,59 @@
+---
+// Inline critical CSS for above-the-fold rendering
+// This reduces render-blocking CSS and improves FCP/LCP
+---
+
+<style is:inline>
+  /* Critical CSS - Above the fold only */
+  /* Base layout */
+  body {
+    margin: 0;
+    font-family: var(--aw-font-sans, ui-sans-serif), system-ui, -apple-system, sans-serif;
+  }
+
+  /* Header - sticky, always visible */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+  }
+
+  /* Hero section - first content users see */
+  #hero {
+    position: relative;
+  }
+
+  /* Essential utility classes for above-the-fold */
+  .relative { position: relative; }
+  .absolute { position: absolute; }
+  .sticky { position: sticky; }
+  .fixed { position: fixed; }
+  .inset-0 { inset: 0; }
+  .top-0 { top: 0; }
+  .z-40 { z-index: 40; }
+  .flex { display: flex; }
+  .hidden { display: none; }
+  .mx-auto { margin-left: auto; margin-right: auto; }
+  .max-w-7xl { max-width: 80rem; }
+  .max-w-5xl { max-width: 64rem; }
+  .max-w-3xl { max-width: 48rem; }
+  .text-center { text-align: center; }
+  .font-bold { font-weight: 700; }
+  .text-5xl { font-size: 3rem; line-height: 1; }
+  .tracking-tight { letter-spacing: -0.025em; }
+  .antialiased { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+  /* Responsive utilities - mobile first */
+  @media (min-width: 768px) {
+    .md\:flex { display: flex; }
+    .md\:hidden { display: none; }
+    .md\:text-6xl { font-size: 3.75rem; line-height: 1; }
+    .md\:px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .md\:pt-20 { padding-top: 5rem; }
+    .md\:pb-16 { padding-bottom: 4rem; }
+  }
+
+  @media (min-width: 640px) {
+    .sm\:px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+  }
+</style>
