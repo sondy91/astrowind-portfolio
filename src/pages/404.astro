@@ -1,23 +1,59 @@
 ---
 import Layout from '~/layouts/Layout.astro';
-import { getHomePermalink } from '~/utils/permalinks';
+import { getHomePermalink, getBlogPermalink } from '~/utils/permalinks';
+import Search from '~/components/widgets/Search.astro';
+import { getCollection } from 'astro:content';
 
 const title = `Error 404`;
+
+const posts = await getCollection('post');
+const recentPosts = posts
+  .filter((post) => !post.data.draft)
+  .sort((a, b) => {
+    const dateA = a.data.publishDate?.getTime() || 0;
+    const dateB = b.data.publishDate?.getTime() || 0;
+    return dateB - dateA;
+  })
+  .slice(0, 3);
 ---
 
 <Layout metadata={{ title }}>
-  <section class="flex items-center h-full p-16">
-    <div class="container flex flex-col items-center justify-center px-5 mx-auto my-8">
-      <div class="max-w-md text-center">
+  <section class="flex items-center min-h-[70vh] p-8 md:p-16">
+    <div class="container flex flex-col items-center justify-center px-5 mx-auto my-8 max-w-4xl">
+      <div class="text-center mb-12">
         <h2 class="mb-8 font-bold text-9xl">
           <span class="sr-only">Error</span>
           <span class="text-primary">404</span>
         </h2>
-        <p class="text-3xl font-semibold md:text-3xl">Sorry, we couldn't find this page.</p>
-        <p class="mt-4 mb-8 text-lg text-muted dark:text-slate-400">
-          But dont worry, you can find plenty of other things on my homepage.
+        <p class="text-3xl font-semibold md:text-3xl mb-4">Sorry, we couldn't find this page.</p>
+        <p class="text-lg text-muted dark:text-slate-400">
+          The page you're looking for doesn't exist or has been moved.
         </p>
-        <a rel="noopener noreferrer" href={getHomePermalink()} class="btn ml-4">Back to homepage</a>
+      </div>
+
+      <div class="w-full max-w-2xl mb-12">
+        <h3 class="text-xl font-semibold mb-4 text-center">Search for content:</h3>
+        <Search />
+      </div>
+
+      <div class="w-full mb-12">
+        <h3 class="text-xl font-semibold mb-6 text-center">Recent Posts:</h3>
+        <div class="grid gap-4 md:grid-cols-3">
+          {recentPosts.map((post) => (
+            <a 
+              href={`/${post.slug}/`} 
+              class="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary dark:hover:border-primary transition-colors"
+            >
+              <h4 class="font-semibold mb-2 text-gray-900 dark:text-white">{post.data.title}</h4>
+              <p class="text-sm text-gray-600 dark:text-gray-400 line-clamp-2">{post.data.excerpt}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <div class="flex gap-4">
+        <a rel="noopener noreferrer" href={getHomePermalink()} class="btn">Back to homepage</a>
+        <a rel="noopener noreferrer" href={getBlogPermalink()} class="btn">View all posts</a>
       </div>
     </div>
   </section>
