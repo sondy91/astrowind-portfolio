@@ -4,12 +4,11 @@ import Layout from '~/layouts/PageLayout.astro';
 import Header from '~/components/widgets/Header.astro';
 import Hero from '~/components/widgets/Hero.astro';
 import Content from '~/components/widgets/Content.astro';
-//import CallToAction from '~/components/widgets/CallToAction.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
 import Features3 from '~/components/widgets/Features3.astro';
-//import Testimonials from '~/components/widgets/Testimonials.astro';
+import Stats from '~/components/widgets/Stats.astro';
 import Steps from '~/components/widgets/Steps.astro';
 import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
-//import { getPermalink } from '~/utils/permalinks';
 import headshot from '~/assets/images/headshot.png';
 const metadata = {
   title: 'Austin Sonderman',
@@ -46,6 +45,7 @@ const yearsOfExperienceEmoji = yearsOfExperience
         { text: 'Portfolio', href: '#portfolio' },
         { text: 'Blog', href: '#blog' },
         { text: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/sondy91' },
+        { text: 'LinkedIn', icon: 'tabler:brand-linkedin', href: 'https://www.linkedin.com/in/austin-sonderman/' },
       ]}
       actions={[
         {
@@ -104,18 +104,24 @@ const yearsOfExperienceEmoji = yearsOfExperience
     <Fragment slot="content">
       <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">About me</h2>
       <p>
-        Software development is my playground, where curiosity meets creativity and challenges spark growth. I thrive on
-        turning ideas into reality, whether it’s crafting intuitive interfaces, optimizing systems, or exploring the
-        latest technologies.
+        I’m an AI Software Engineer at Collins Aerospace in Nashville, TN, where I build enterprise-grade AI
+        solutions—RAG pipelines, chatbot interfaces, and streaming LLM applications—serving 80,000+ employees across
+        AWS Gov and Commercial clouds.
       </p>
       <br />
       <p>
-        With a relentless passion for learning, I stay sharp by diving into new tools, industry trends, and
-        breakthroughs. For me, this isn’t just a career—it’s an ever-evolving journey of discovery and innovation. Let’s
-        create something amazing together!
+        My career started with 5 years of full-stack SPA development at Zywave, giving me a strong foundation in both
+        frontend and backend engineering before pivoting fully into AI/ML. I once cut LLM response latency from ~30
+        seconds to 300ms by diving deep into SSE, FastAPI streaming, and API Gateway configs—that kind of
+        curiosity-driven problem solving is what drives me.
       </p>
       <br />
-      <p>If you're curious to dive deeper into my work, you can follow me:</p>
+      <p>
+        Currently exploring Go, obsessing over agentic AI patterns, and writing about it all here. Outside work: a good
+        book, Lord of the Rings reruns with my wife, and walks with my dog Pierogi 🐶.
+      </p>
+      <br />
+      <p>Follow me and let’s connect:</p>
     </Fragment>
 
     <Fragment slot="bg">
@@ -151,7 +157,7 @@ const yearsOfExperienceEmoji = yearsOfExperience
   <!-- Steps Widget ****************** -->
 
   <Steps
-    id="resume"
+    id="education"
     title="Education"
     items={[
       {
@@ -169,7 +175,7 @@ const yearsOfExperienceEmoji = yearsOfExperience
   <!-- Steps Widget ****************** -->
 
   <Steps
-    id="resume"
+    id="certifications"
     title="Certifications"
     items={[
       {
@@ -240,13 +246,44 @@ const yearsOfExperienceEmoji = yearsOfExperience
       {
         title: 'SQL',
         description:
-          'Experienced in deploying and managing scalable applications on AWS, optimizing cloud resources, and ensuring high availability.',
+          'Proficient in writing complex queries, designing relational schemas, and optimizing database performance for high-throughput applications.',
       },
       {
         title: 'Opensearch/Elasticsearch',
         description:
           'Proficient in implementing powerful search and analytics capabilities using OpenSearch/Elasticsearch for real-time data insights.',
       },
+      {
+        title: 'Generative AI / LLMs',
+        description:
+          'Hands-on experience building production LLM applications including RAG pipelines, prompt engineering, and optimizing inference latency at scale.',
+      },
+      {
+        title: 'LangChain',
+        description:
+          'Experienced using LangChain to compose retrieval-augmented generation pipelines, agents, and tool-use patterns for enterprise AI solutions.',
+      },
+      {
+        title: 'Docker',
+        description:
+          'Skilled in containerizing applications with Docker to ensure consistent, portable deployments across development and cloud environments.',
+      },
+      {
+        title: 'Go',
+        description:
+          'Actively learning Go for its performance, simplicity, and strong concurrency model—exploring it as a complement to Python in production services.',
+      },
+    ]}
+  />
+
+  <!-- Stats Widget ****************** -->
+
+  <Stats
+    stats={[
+      { amount: `${yearsOfExperience}+`, title: 'Years Experience', icon: 'tabler:calendar' },
+      { amount: '3', title: 'Cloud Certifications', icon: 'tabler:certificate' },
+      { amount: '2', title: 'Companies', icon: 'tabler:building' },
+      { amount: '80K+', title: 'Employees Served', icon: 'tabler:users' },
     ]}
   />
 
@@ -292,6 +329,52 @@ const yearsOfExperienceEmoji = yearsOfExperience
   </Content>
 
   <!-- Content Widget **************** -->
+
+  <Content
+    id="portfolio-2"
+    items={[
+      {
+        title: 'Description:',
+        description:
+          'Built a fast, SEO-optimized personal portfolio using Astro, Tailwind CSS, and Sanity CMS as a headless content backend. Features dark mode, a fully functional blog with categories and tags, and automated Vercel deployments.',
+      },
+      {
+        title: 'Tech Stack:',
+        description: 'Astro 5, Tailwind CSS, TypeScript, Sanity CMS, React, Vercel.',
+      },
+    ]}
+    image={{
+      src: headshot,
+      alt: 'Austin Sonderman Portfolio Site',
+    }}
+    callToAction={{
+      target: '_blank',
+      text: 'View on GitHub',
+      icon: 'tabler:brand-github',
+      href: 'https://github.com/sondy91/astrowind-portfolio',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        This Portfolio Site: <br /><span class="text-2xl">A modern developer portfolio built with Astro</span>
+      </h3>
+    </Fragment>
+  </Content>
+
+  <!-- CallToAction Widget ************ -->
+
+  <CallToAction
+    title="Want to build something together?"
+    subtitle="I'm open to discussing AI/ML projects, full-stack work, or just geeking out about Go and LLMs."
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Get in touch',
+        href: '/contact',
+        icon: 'tabler:mail',
+      },
+    ]}
+  />
 
   <!-- BlogLatestPost Widget **************** -->
 
