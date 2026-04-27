@@ -19,8 +19,6 @@ metadata:
     site_name: AustinSonderman
     images:
       - url: '~/assets/images/headshot.png'
-        width: 1200
-        height: 628
     type: website
 
 i18n:
