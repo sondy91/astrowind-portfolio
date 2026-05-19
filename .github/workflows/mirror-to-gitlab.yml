@@ -2,7 +2,7 @@ name: Mirror to GitLab
 
 on:
   push:
-    branches: ["**"]
+    branches: ['**']
   delete:
 
 jobs:
@@ -26,4 +26,4 @@ jobs:
           git push gitlab --all --force
           git push gitlab --tags --force
         env:
-          GIT_SSH_COMMAND: "ssh -i ~/.ssh/gitlab_key -o StrictHostKeyChecking=no"
+          GIT_SSH_COMMAND: 'ssh -i ~/.ssh/gitlab_key -o StrictHostKeyChecking=no'
